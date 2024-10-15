@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="stylesheet" href="{% static 'pico.jade.css' %}" />
+  <script src="{% static 'htmx.v2.0.0.min.js' %}"></script>
+  <title>
+    {% block title %}
+    Staff Performance Evaluation Platform
+    {% endblock %}
+  </title>
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+  <nav class="container">
+    <ul>
+      <li><strong>Performance Evaluation Platform</strong></li>
+    </ul>
+    <ul>
+      {% if user.is_authenticated %}
+      <li>
+        <a href="{% url 'home' %}">Home</a>
+      </li>
+{#      <li>#}
+{#        <a href="{% url 'evaluation_list' %}">Evaluations</a>#}
+{#      </li>#}
+      <li>
+        <a href="{% url 'profile' %}">Profile</a>
+      </li>
+      <li>
+        <a href="{% url 'logout' %}">Logout</a>
+      </li>
+      {% else %}
+      <li>
+        <a href="{% url 'login' %}">Login</a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+
+  <hr>
+
+  <main class="container">
+    {% if messages %}
+    {% for message in messages %}
+    <article class="{% if message.tags %}{{ message.tags }}{% endif %}">
+      {{ message }}
+    </article>
+    {% endfor %}
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  {% block extra_body %}{% endblock %}
+</body>
+</html>

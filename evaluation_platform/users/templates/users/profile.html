@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block content %}
+<section class="container">
+    <h2>User Profile</h2>
+    <div>
+        <div>
+            <p><strong>Name:</strong> {{ user.full_name }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Department:</strong> {{ user.department }}</p> </div>
+            {% if user.get_supervisor %}
+                <p><strong>Supervisor:</strong> {{ user.get_supervisor }}</p>
+            {% endif %}
+        </div>
+</section>
+{% endblock %}
