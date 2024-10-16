@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Local apps
     "evaluation_platform.users",
-    # "evaluation_platform.evaluations",
+    "evaluation_platform.evaluations",
     # 3rd party
     "debug_toolbar",
     "django_extensions",
