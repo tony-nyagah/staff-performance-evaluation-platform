@@ -11,7 +11,7 @@ class EvaluationAdmin(admin.ModelAdmin):
 @admin.register(UserEvaluation)
 class UserEvaluationAdmin(admin.ModelAdmin):
     list_display = ('staff_member', 'evaluation')
-    search_fields = ('staff_member__full_name', 'evaluation__year')
+    search_fields = ('staff_member__first_name', 'staff_member__last_name', 'evaluation__year')
     list_filter = ('evaluation__year',)
 
 

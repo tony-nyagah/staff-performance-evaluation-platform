@@ -6,6 +6,9 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from django.utils import timezone
 
+from evaluation_platform.evaluations.models import Evaluation
+
+
 # from evaluation_platform.evaluations.models import UserEvaluation, UserSection, Evaluation
 
 
@@ -47,7 +50,10 @@ def home_view(request):
     # )
     #
     # return render(request, "users/home.html", {"evaluations": evaluations})
-    return render(request, "users/home.html")
+    today = timezone.now().date()
+    current_evaluation = Evaluation.objects.filter(start_date__lte=today, submission_deadline__gte=today).first()
+
+    return render(request, "users/home.html", context={"current_evaluation": current_evaluation})
 
 
 def login_view(request):
