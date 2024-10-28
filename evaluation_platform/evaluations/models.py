@@ -49,6 +49,9 @@ class UserSection(models.Model):
             return (avg_supervisor_score / 4) * (self.section.weight / 100)
         return 0
 
+    def __str__(self):
+        return f"{self.section.name}({self.user_evaluation.staff_member.full_name} - {self.user_evaluation.evaluation.year})"
+
 
 class Goal(models.Model):
     description = models.TextField()

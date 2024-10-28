@@ -3,11 +3,17 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <h2>Welcome to the Staff Performance Evaluation Platform.</h2>
+    <h2>Welcome to the Staff Performance Evaluation Platform</h2>
     {% if current_evaluation %}
-        <a href="">Fill in {{ current_evaluation.year }} evaluation.</a>
+        <a href="">Fill in {{ current_evaluation.year }} evaluation</a>
+    {% else %}
+        <p>This year's assessment isn't available or has passed.</p>
     {% endif %}
+    <hr />
+    <h2>View previous evaluations</h2>
     <ul>
+
+    </ul>
 {#        {% for evaluation in evaluations %}#}
 {#            <li>#}
 {#                Evaluation for {{ evaluation.year }} - #}
